@@ -98,7 +98,7 @@ namespace EndPoint.Site.Controllers
                 ModelState.AddModelError(nameof(UserLoginViewModel.UserName), result.Message);
                 return View(user);
             }
-
+            //result.Data Contains User Id
             await HttpContext.LoginToSiteAsync(result.Data, user.UserName);
 
             ViewBag.IsSuccess = true;

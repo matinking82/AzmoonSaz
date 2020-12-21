@@ -19,6 +19,7 @@ namespace AzmoonSaz.ViewModels.User
 
         [Display(Name = "تکرار کلمه عبور")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [Compare(nameof(Password), ErrorMessage = "کلمه عبور و تکرار آن یکسان نیستند!!")]
         public string ConfirmPassword { get; set; }
     }
 }

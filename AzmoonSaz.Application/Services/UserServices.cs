@@ -28,7 +28,7 @@ namespace AzmoonSaz.Application.Services
                 try
                 {
                     await _context.Users.AddAsync(user);
-
+                    await _context.SaveChangesAsync();
                     return true;
                 }
                 catch (Exception)
@@ -44,6 +44,16 @@ namespace AzmoonSaz.Application.Services
             {
                 try
                 {
+
+                    if (_context.Users.Any(u => u.UserName == request.UserName))
+                    {
+                        return new ResultDto()
+                        {
+                            Status = ServiceStatus.Error,
+                            Message = "نام کاربری قبلا استفاده شده است"
+                        };
+                    }
+
                     User newUser = new User()
                     {
                         UserName = request.UserName,

@@ -10,11 +10,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AzmoonSaz.Application\AzmoonSaz.Application.csproj" />
     <ProjectReference Include="..\AzmoonSaz.Persistance\AzmoonSaz.Persistance.csproj" />
+    <ProjectReference Include="..\AzmoonSaz.ViewModels\AzmoonSaz.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

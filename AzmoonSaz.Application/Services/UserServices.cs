@@ -5,6 +5,7 @@ using AzmoonSaz.Common.DTOs.User;
 using AzmoonSaz.Common.Enums;
 using AzmoonSaz.Common.Utilities;
 using AzmoonSaz.Domain.Entities.User;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,14 +39,71 @@ namespace AzmoonSaz.Application.Services
             });
         }
 
+        public async Task<User> GetUserByUserName(string username)
+        {
+            return await Task.Run(async () =>
+            {
+                return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            });
+        }
+
+        public async Task<bool> IsExistUserNameAsync(string username)
+        {
+            return await Task.Run(() =>
+            {
+                return _context.Users.Any(u => u.UserName == username);
+            });
+        }
+
+
+
+        public async Task<ResultDto<int>> LoginUserAsync(RequestLoginUserDto request)
+        {
+            return await Task.Run(async () =>
+            {
+                try
+                {
+                    User user = await GetUserByUserName(request.UserName);
+
+                    if (user == null)
+                    {
+                        return new ResultDto<int>()
+                        {
+                            Status = ServiceStatus.NotFound
+                        };
+                    }
+
+                    if (user.Password == await request.Password.ToHashedAsync())
+                    {
+                        return new ResultDto<int>()
+                        {
+                            Status = ServiceStatus.Success,
+                            Data = user.Id
+                        };
+                    }
+
+                    return new ResultDto<int>()
+                    {
+                        Status = ServiceStatus.NotFound
+                    };
+                }
+                catch (Exception)
+                {
+                    return new ResultDto<int>()
+                    {
+                        Status = ServiceStatus.SystemError,
+                    };
+                }
+            });
+        }
+
         public async Task<ResultDto> SignupUserAsync(RequestSignupUserDto request)
         {
             return await Task.Run(async () =>
             {
                 try
                 {
-
-                    if (_context.Users.Any(u => u.UserName == request.UserName))
+                    if (await IsExistUserNameAsync(request.UserName))
                     {
                         return new ResultDto()
                         {

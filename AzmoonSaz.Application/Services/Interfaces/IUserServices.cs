@@ -13,6 +13,10 @@ namespace AzmoonSaz.Application.Services.Interfaces
     {
         Task<bool> AddUserAsync(User user);
 
+        Task<bool> IsExistUserNameAsync(string username);
+        Task<User> GetUserByUserName(string username);
+
         Task<ResultDto> SignupUserAsync(RequestSignupUserDto request);
+        Task<ResultDto<int>> LoginUserAsync(RequestLoginUserDto request); 
     }
 }

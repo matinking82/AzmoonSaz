@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Classroom\" />
+    <Folder Include="DTOs\Test\" />
+  </ItemGroup>
+
 </Project>

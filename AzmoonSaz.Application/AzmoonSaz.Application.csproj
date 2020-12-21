@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AzmoonSaz.Common\AzmoonSaz.Common.csproj" />
     <ProjectReference Include="..\AzmoonSaz.Domain\AzmoonSaz.Domain.csproj" />
   </ItemGroup>
 

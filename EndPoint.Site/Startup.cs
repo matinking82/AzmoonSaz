@@ -1,4 +1,6 @@
 using AzmoonSaz.Application.Interfaces;
+using AzmoonSaz.Application.Services;
+using AzmoonSaz.Application.Services.Interfaces;
 using AzmoonSaz.Persistance.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -53,7 +55,7 @@ namespace EndPoint.Site
             #endregion
 
             #region IoC
-
+            services.AddScoped<IUserServices, UserServices>();
             #endregion
         }
 

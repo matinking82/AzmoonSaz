@@ -1,0 +1,36 @@
+﻿@model AzmoonSaz.ViewModels.User.UserLoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<form asp-action="Login" method="post" class="login-form">
+    @if (ViewBag.IsSuccess != null)
+    {
+        <div class="alert alert-success">
+            ورود شما با موفقیت انجام شد
+        </div>
+        <script>
+
+        </script>
+    }
+    <h2>
+        ورود به حساب کاربری
+    </h2>
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger">
+
+    </div>
+
+    <button type="submit" class="btn btn-block btn-success">
+        ورود
+    </button>
+</form>
+

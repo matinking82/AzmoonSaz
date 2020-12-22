@@ -1,0 +1,41 @@
+header {
+    background-color: royalblue;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.question {
+    border: 1px solid #c2c2c2;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.question-image {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.question-text {
+    color: darkgreen;
+}
+
+.answers {
+    direction: rtl;
+    text-align: right;
+    margin: 30px;
+    padding: 20px;
+}
+
+.answers input {
+    margin: 10px;
+}
+
+.question-title {
+    direction: rtl;
+    text-align: right;
+}
+
+.main-form {
+    padding: 50px;
+}

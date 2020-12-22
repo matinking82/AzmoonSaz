@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AzmoonSaz.ViewModels.Classroom.ClassroomForListVIewMoldel>
+
+@{
+    ViewData["Title"] = "کلاس ها";
+}
+
+<h1>کلاس های من</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">ایجاد کلاس جدید</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsMyClass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassName)
+                </td>
+                <td>
+                    @if (item.IsMyClass)
+                    {
+                        <span class="btn btn-success"></span>
+                    }
+                    else
+                    {
+                        <span class="btn btn-danger">X</span>
+                    }
+                </td>
+                <td>
+                    @if (item.IsMyClass)
+                    {
+                        <a asp-action="Edit" asp-route-Id="@item.ClassId" class="btn btn-warning">ویرایش</a>
+                        <a asp-action="Delete" asp-route-Id="@item.ClassId" class="btn btn-danger">حذف</a>
+                    }
+                    <a asp-action="Details" asp-route-Id="@item.ClassId" class="btn btn-primary">جزئیات</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -56,6 +56,7 @@ namespace EndPoint.Site
 
             #region IoC
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<IClassroomService, ClassroomService>();
             #endregion
         }
 

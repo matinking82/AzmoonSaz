@@ -31,18 +31,18 @@
                 <td>
                     @if (item.IsMyClass)
                     {
-                        <span class="btn btn-success"></span>
+                        <span class="btn btn-success">مدیر</span>
                     }
                     else
                     {
-                        <span class="btn btn-danger">X</span>
+                        <span class="btn btn-warning">دانشجو</span>
                     }
                 </td>
                 <td>
                     @if (item.IsMyClass)
                     {
-                        <a asp-action="Edit" asp-route-Id="@item.ClassId" class="btn btn-warning">ویرایش</a>
-                        <a asp-action="Delete" asp-route-Id="@item.ClassId" class="btn btn-danger">حذف</a>
+                        <a href="#" onclick="editClass(@item.ClassId);" class="btn btn-warning">ویرایش نام</a>
+                        <a href="#" onclick="deleteClass(@item.ClassId);" class="btn btn-danger">حذف</a>
                     }
                     <a asp-action="Details" asp-route-Id="@item.ClassId" class="btn btn-primary">جزئیات</a>
                 </td>

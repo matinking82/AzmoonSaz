@@ -1,4 +1,4 @@
-start()
+﻿start()
 
 function start() {
 
@@ -24,4 +24,40 @@ async function menuItemOver(menuItem) {
 
 async function menuItemOut(menuItem) {
     menuItem.children[0].removeAttribute('style');
+}
+
+function deleteClass(classId) {
+    debugger;
+    var modalcontent = document.getElementById('modal-content');
+    modalcontent.innerHTML = '';
+
+
+    var p = document.createElement('p');
+    p.innerHTML = "آیا از حذف این کلاس اطمینان دارید؟";
+
+    var div = document.createElement('div');
+    div.classList.add('alert', 'alert-warning');
+    div.innerHTML = "تمام دانش آموزان و آزمون های این کلاس حذف خواهند شد";
+
+    var a = document.createElement('a');
+    a.href = "classes/delete/" + classId;
+    a.classList.add('btn', 'btn-danger');
+    a.innerHTML = "حذف";
+
+    modalcontent.appendChild(p);
+    modalcontent.appendChild(div);
+    modalcontent.appendChild(a);
+
+    ShowModal();
+}
+
+
+async function ShowModal() {
+    $("#main-modal").modal('show');
+}
+
+function editClass(classId) {
+    $('#modal-content').load('/Classes/Edit/' + classId);
+
+    ShowModal();
 }

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AzmoonSaz.ViewModels.User.StudentsListForClass>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>
+    کلاس
+    @ViewBag.ClassName
+</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="Students" class="btn btn-success">افزودن دانش آموز جدید</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-controller="Students" asp-route-Id="@item.UserId" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

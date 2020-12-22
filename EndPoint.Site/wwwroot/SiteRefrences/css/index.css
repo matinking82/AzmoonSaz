@@ -6,9 +6,9 @@
     font-size: 25px;
 }
 
-.top-menu li a:hover {
-    background-color: rgb(53, 8, 255);
-}
+    .top-menu li a:hover {
+        background-color: rgb(53, 8, 255);
+    }
 
 .top-menu li {
     display: inline-block;
@@ -26,20 +26,20 @@
     margin: 100px 0;
 }
 
-.home-item h2 {
-    text-align: right;
-    direction: rtl;
-    padding: 10px;
-}
+    .home-item h2 {
+        text-align: right;
+        direction: rtl;
+        padding: 10px;
+    }
 
 .m-shadow {
     box-shadow: 0px 0px 20px #c5c5c5;
     transition: box-shadow 1s;
 }
 
-.m-shadow:hover {
-    box-shadow: 0px 0px 80px #c2c2c2;
-}
+    .m-shadow:hover {
+        box-shadow: 0px 0px 80px #c2c2c2;
+    }
 
 .menu-item {
     width: 45%;
@@ -47,17 +47,17 @@
     text-align: center;
 }
 
-.menu-item div.m-main {
-    width: 400px;
-    height: 400px;
-    box-shadow: -2px 2px 5px #333333;
-    margin: 20px auto;
-    border-radius: 30px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 1s;
-}
+    .menu-item div.m-main {
+        width: 400px;
+        height: 400px;
+        box-shadow: -2px 2px 5px #333333;
+        margin: 20px auto;
+        border-radius: 30px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 1s;
+    }
 
 @media(max-width:1200px) {
     .menu-item {
@@ -66,6 +66,7 @@
         width: 100%;
         text-align: center;
     }
+
     main.main {
         padding: 0px !important;
     }
@@ -103,6 +104,8 @@ main.main {
     padding: 40px;
     border-radius: 50px;
     box-shadow: 0px 0px 20px #c2ccc2;
+    direction: rtl;
+    text-align:right;
 }
 
 a {

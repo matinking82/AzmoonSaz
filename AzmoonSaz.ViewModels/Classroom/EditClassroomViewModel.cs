@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace AzmoonSaz.ViewModels.Classroom
 {
-    public record ClassroomForListVIewMoldel
+    public class EditClassroomViewModel
     {
+        [Display(Name ="نام جدید")]
+        public string Name { get; set; }
+
         public int ClassId { get; set; }
-        [Display(Name ="نام کلاس")]
-        public string ClassName { get; set; }
-        [Display(Name ="وضعیت")]
-        public bool IsMyClass { get; set; }
     }
 }

@@ -61,3 +61,8 @@ function editClass(classId) {
 
     ShowModal();
 }
+
+function createStudent(classId) {
+    $('#modal-content').load('/Students/Create/' + classId);
+    ShowModal();
+}

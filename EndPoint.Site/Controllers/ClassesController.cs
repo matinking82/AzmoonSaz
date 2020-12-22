@@ -146,7 +146,7 @@ namespace EndPoint.Site.Controllers
             }
 
             ViewBag.ClassName = (await _classroomService.GetClassroomByClassId(Id)).ClassName;
-
+            ViewBag.ClassId = Id;
             return View(result.Data
                 .Select(s => new StudentsListForClass()
                 {

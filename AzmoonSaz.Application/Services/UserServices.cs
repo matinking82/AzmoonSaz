@@ -22,6 +22,60 @@ namespace AzmoonSaz.Application.Services
             _context = context;
         }
 
+        public async Task<ResultDto> AddStudentByTeacher(RequestAddStudentByTeacherDto request)
+        {
+            return await Task.Run(async () =>
+            {
+                try
+                {
+                    var classroom = await _context.Classrooms.FindAsync(request.ClassId);
+
+                    if (classroom == null)
+                    {
+                        return new ResultDto()
+                        {
+                            Status = ServiceStatus.NotFound,
+                        };
+                    }
+
+                    User newUser = new User()
+                    {
+                        Password = await request.UserName.ToHashedAsync(),
+                        UserName = request.UserName,
+                    };
+
+                    UserInClassroom newUserInClassroom = new UserInClassroom()
+                    {
+                        Classroom = classroom,
+                        ClassroomId = request.ClassId,
+                        User = newUser,
+                        UserId = newUser.Id,
+                    };
+
+                    await _context.Users.AddAsync(newUser);
+
+                    await _context.UserInClassrooms.AddAsync(newUserInClassroom);
+
+                    await _context.SaveChangesAsync();
+
+
+
+                    return new ResultDto()
+                    {
+                        Status = ServiceStatus.Success,
+                    };
+                }
+                catch (Exception)
+                {
+                    return new ResultDto()
+                    {
+                        Status = ServiceStatus.SystemError,
+                    };
+                }
+
+            });
+        }
+
         public Task<bool> AddUserAsync(User user)
         {
             return Task.Run(async () =>

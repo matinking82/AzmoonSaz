@@ -27,6 +27,7 @@ namespace AzmoonSaz.Application.Services.Interfaces
         Task<ResultDto<RequestEditClassroomByUserDto>> GetClassroomDetailForEditByUser(int classId);
 
         Task<ResultDto<IEnumerable<StudentsListForClassDto>>> GetStudentsListForClassByClassId(int classId);
+
     }
 
 }

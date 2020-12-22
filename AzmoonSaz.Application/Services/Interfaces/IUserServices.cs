@@ -17,6 +17,9 @@ namespace AzmoonSaz.Application.Services.Interfaces
         Task<User> GetUserByUserName(string username);
 
         Task<ResultDto> SignupUserAsync(RequestSignupUserDto request);
-        Task<ResultDto<int>> LoginUserAsync(RequestLoginUserDto request); 
+        Task<ResultDto<int>> LoginUserAsync(RequestLoginUserDto request);
+
+        Task<ResultDto> AddStudentByTeacher(RequestAddStudentByTeacherDto request);
+
     }
 }

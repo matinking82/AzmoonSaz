@@ -43,8 +43,8 @@
                     {
                         <a href="#" onclick="editClass(@item.ClassId);" class="btn btn-warning">ویرایش نام</a>
                         <a href="#" onclick="deleteClass(@item.ClassId);" class="btn btn-danger">حذف</a>
+                        <a asp-action="Details" asp-route-Id="@item.ClassId" class="btn btn-primary">جزئیات</a>
                     }
-                    <a asp-action="Details" asp-route-Id="@item.ClassId" class="btn btn-primary">جزئیات</a>
                 </td>
             </tr>
         }

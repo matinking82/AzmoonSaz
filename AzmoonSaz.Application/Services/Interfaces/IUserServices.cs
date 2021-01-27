@@ -21,5 +21,7 @@ namespace AzmoonSaz.Application.Services.Interfaces
 
         Task<ResultDto> AddStudentByTeacher(RequestAddStudentByTeacherDto request);
 
+        Task<bool> DeleteUserById(int userId);
+        Task<bool> DeleteUser(User user);
     }
 }

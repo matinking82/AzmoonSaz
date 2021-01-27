@@ -93,6 +93,43 @@ namespace AzmoonSaz.Application.Services
             });
         }
 
+        public async Task<bool> DeleteUser(User user)
+        {
+            return await Task.Run(async () =>
+            {
+                try
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return true;
+                }
+            });
+        }
+
+        public async Task<bool> DeleteUserById(int userId)
+        {
+            return await Task.Run(async () =>
+            {
+                try
+                {
+                    var User = await _context.Users.FindAsync(userId);
+                    var res = await DeleteUser(User);
+                    return res;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            });
+        }
+
+
+
         public async Task<User> GetUserByUserName(string username)
         {
             return await Task.Run(async () =>

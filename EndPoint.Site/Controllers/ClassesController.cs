@@ -4,6 +4,7 @@ using AzmoonSaz.Common.Enums;
 using AzmoonSaz.ViewModels.Classroom;
 using AzmoonSaz.ViewModels.User;
 using EndPoint.Site.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace EndPoint.Site.Controllers
 {
+    [Authorize]
     public class ClassesController : Controller
     {
         private readonly IClassroomService _classroomService;

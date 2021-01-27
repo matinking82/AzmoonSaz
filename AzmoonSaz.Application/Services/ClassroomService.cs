@@ -17,9 +17,11 @@ namespace AzmoonSaz.Application.Services
     public class ClassroomService : IClassroomService
     {
         private readonly IDataBaseContext _context;
-        public ClassroomService(IDataBaseContext context)
+        private readonly IUserServices _userServices;
+        public ClassroomService(IDataBaseContext context,IUserServices userServices)
         {
             _context = context;
+            _userServices = userServices;
         }
 
         public async Task<bool> AddClassroom(Classroom classroom)
@@ -78,6 +80,29 @@ namespace AzmoonSaz.Application.Services
             {
                 try
                 {
+                    #region Delete ClassStudents
+
+                    var UserInClass = await _context.UserInClassrooms
+                    .Where(u => u.ClassroomId == classId)
+                    .ToListAsync();
+
+                    foreach (var item in UserInClass)
+                    {
+                        _context.UserInClassrooms.Remove(item);
+                        var Res = await _userServices.DeleteUserById(item.UserId);
+
+                        if (!Res)
+                        {
+                            return new ResultDto()
+                            {
+                                Status = ServiceStatus.SystemError
+                            };
+                        }
+                    }
+
+                    #endregion
+
+                    #region Delete Class
                     var classroom = await GetClassroomByClassId(classId);
 
                     if (classroom == null)
@@ -88,6 +113,7 @@ namespace AzmoonSaz.Application.Services
                         };
                     }
                     await RemoveClassroom(classroom);
+                    #endregion
 
                     return new ResultDto()
                     {
@@ -303,7 +329,7 @@ namespace AzmoonSaz.Application.Services
 
                     return true;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     return false;
                 }

@@ -24,6 +24,7 @@
     padding: 20px;
     border-radius: 20px;
     margin: 100px 0;
+    direction:rtl;
 }
 
     .home-item h2 {
@@ -117,4 +118,11 @@ a {
     text-decoration: none;
     padding: 0px;
     margin: 0px;
+}
+
+.tests-list-header {
+    margin: 5px;
+    display: inline-block;
+    float: right;
+    font-size: 20px;
 }

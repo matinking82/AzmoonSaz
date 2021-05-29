@@ -23,5 +23,6 @@ namespace AzmoonSaz.Application.Services.Interfaces
 
         Task<bool> DeleteUserById(int userId);
         Task<bool> DeleteUser(User user);
+        Task<ResultDto> DeleteStudentFromClass(int userId);
     }
 }

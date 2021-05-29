@@ -76,9 +76,9 @@ namespace AzmoonSaz.Application.Services
             });
         }
 
-        public Task<bool> AddUserAsync(User user)
+        public async Task<bool> AddUserAsync(User user)
         {
-            return Task.Run(async () =>
+            return await Task.Run(async () =>
             {
                 try
                 {
@@ -93,12 +93,49 @@ namespace AzmoonSaz.Application.Services
             });
         }
 
+        public async Task<ResultDto> DeleteStudentFromClass(int userId)
+        {
+            return await Task.Run(async () =>
+            {
+                var user = await _context.Users.FindAsync(userId);
+
+                if (user == null)
+                {
+                    return new ResultDto()
+                    {
+                        Status = ServiceStatus.NotFound,
+                    };
+                }
+
+                await DeleteUser(user);
+
+                return new ResultDto()
+                {
+                    Status = ServiceStatus.Success
+                };
+            });
+        }
+
         public async Task<bool> DeleteUser(User user)
         {
             return await Task.Run(async () =>
             {
                 try
                 {
+                    #region Delete UserInClassrooms
+
+                    var UserInClassrooms = await _context.UserInClassrooms
+                    .Where(c => c.UserId == user.Id)
+                    .ToListAsync();
+
+
+                    foreach (var item in UserInClassrooms)
+                    {
+                        _context.UserInClassrooms.Remove(item);
+                    }
+
+                    #endregion
+
                     _context.Users.Remove(user);
                     await _context.SaveChangesAsync();
 
@@ -106,7 +143,7 @@ namespace AzmoonSaz.Application.Services
                 }
                 catch (Exception e)
                 {
-                    return true;
+                    return false;
                 }
             });
         }

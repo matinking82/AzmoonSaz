@@ -88,7 +88,7 @@ namespace AzmoonSaz.Application.Services
 
                     foreach (var item in UserInClass)
                     {
-                        _context.UserInClassrooms.Remove(item);
+                        //_context.UserInClassrooms.Remove(item);
                         var Res = await _userServices.DeleteUserById(item.UserId);
 
                         if (!Res)

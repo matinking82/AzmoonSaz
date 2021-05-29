@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AzmoonSaz.ViewModels.Tests.TestsClassViewModel>;
+@{
+    ViewData["Title"] = "آزمونهای من";
+}
+
+@foreach (var item in Model)
+{
+    <article class="home-item m-shadow">
+        <h2 class="tests-list-header">کلاس @item.ClassName</h2>
+        <span class="tests-list-header">وضعیت :</span>
+        @if (item.IsMyClass)
+        {
+            <span class="btn btn-success tests-list-header">مدیر</span>
+        }
+        else
+        {
+            <span class="btn btn-warning tests-list-header">دانش آموز</span>
+        }
+        ||
+        <a asp-action="Details" asp-route-Id="@item.ClassId" asp-controller="Classes" class="btn btn-primary">جزئیات</a>
+        <br />
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>عنوان آزمون</th>
+                    <th>توضیحات</th>
+                    <th>تعداد سوال</th>
+                    <th></th>
+                <!--
+                    asdasd
+                    asdasd
+                    asdasd
+                -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var test in item.Tests)
+                {
+                <tr>
+                    <td>@test.Title</td>
+                    <td>@test.Description</td>
+                    <td>@test.QuestionsCount</td>
+                    <td>
+                        @*
+                        <a href="#" class="btn btn-primary">X</a>
+                        <a href="#" class="btn btn-primary">X</a>
+                        <a href="#" class="btn btn-primary">X</a>
+                        *@
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+}
+

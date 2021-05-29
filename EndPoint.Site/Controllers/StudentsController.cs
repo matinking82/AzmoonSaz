@@ -80,7 +80,7 @@ namespace EndPoint.Site.Controllers
                 return NotFound();
             }
 
-            //TODO: Delete User
+            var result = await _userServices.DeleteStudentFromClass(Id);
 
             return RedirectToAction(nameof(ClassesController.Index), "Classes");
         }

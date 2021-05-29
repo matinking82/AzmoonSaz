@@ -1,4 +1,6 @@
-﻿using AzmoonSaz.Domain.Entities.Test;
+﻿using AzmoonSaz.Common.DTOs;
+using AzmoonSaz.Common.DTOs.Test;
+using AzmoonSaz.Domain.Entities.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +16,7 @@ namespace AzmoonSaz.Application.Services.Interfaces
         Task<bool> DeleteTestById(int testId);
         Task<bool> UpdateTest(Test test);
         Task<Test> GetTestById(int testId);
+
+        Task<ResultDto<List<TestsClassForUserInSiteDto>>> GetTestsForUserByUserId(int userId);
     }
 }
